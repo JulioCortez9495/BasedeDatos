@@ -1,0 +1,19 @@
+name: Verificar Backup Diario
+
+on:
+  # Se ejecuta cuando haces push o manualmente desde la pestaña de Actions
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  verify-backup:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Clonar el repositorio donde están tus backups
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # 2. Usar tu Action personalizado
+      - name: Verificar Integridad del Backup
+        uses: IkerASierraR/SafeBridgeAction@master
